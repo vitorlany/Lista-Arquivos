@@ -4,17 +4,25 @@
 
 int main()
 {
-    double ultimo = 1; double penultimo = 1;
-    char total[500];
-    sprintf(total, "%.0lf\n%.0lf\n", penultimo, ultimo);
-    for (int i = 0; i < 64; i++) {
-        double novo = ultimo + penultimo;
-        char texto[50];
-        sprintf(texto, "%.0lf\n", novo);
-        strcat(total, texto);
-        penultimo = ultimo;
-        ultimo = novo;
+    FILE * arquivo;
+    arquivo = fopen("arquivo.txt", "w");
+    if (arquivo != NULL) {
+        double ultimo = 1; double penultimo = 1;
+        char total[500];
+        fprintf(arquivo, "%.0lf\n", penultimo);
+        fprintf(arquivo, "%.0lf\n", ultimo);
+        for (int i = 0; i < 64; i++) {
+            double novo = ultimo + penultimo;
+            char texto[50];
+            fprintf(arquivo, "%.0lf\n", novo);
+            strcat(total, texto);
+            penultimo = ultimo;
+            ultimo = novo;
+        }
+        printf("Salvo com sucesso!");
+    } else {
+        printf("O arquivo nao existe!");
     }
-    printf("%s", total);
+    fclose(arquivo);
     return 0;
 }
