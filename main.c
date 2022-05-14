@@ -11,6 +11,7 @@ void ex04();
 int main()
 {
     // Falta fazer o 3
+    ex04();
     return 0;
 }
 
@@ -86,14 +87,14 @@ void ex04() {
             int arraySize = sizeof(vetor) / sizeof(vetor[0]);
             for (int i = 0; i <= arraySize; i++) {
                 if (vetor[i] == inserido) {
-                    printf("Valor igual = [%i] %i\n", i, inserido);
+                    printf("Valor igual = [%i] %i\n", i+1, inserido);
                     igual = 1;
                 }
             }
             if (!(igual)) {
                 for (int i = 0; i <= arraySize; i++) {
                     if (inserido < vetor[i]) {
-                        printf("O numero esta entre [%i] %.0lf e [%i] %.0lf\n", i-1, vetor[i-1], i, vetor[i]);
+                        printf("O numero esta entre [%i] %.0lf e [%i] %.0lf\n", i, vetor[i-1], i+1, vetor[i]);
                         break;
                     }
                 }
