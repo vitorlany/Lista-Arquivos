@@ -5,13 +5,12 @@
 
 void ex01();
 void ex02();
-
+void ex03();
 void ex04();
 
 int main()
 {
-    // Falta fazer o 3
-    ex04();
+    
     return 0;
 }
 
@@ -64,6 +63,40 @@ void ex02() {
     fclose(fibonacci);
     fclose(pares);
     fclose(impares);
+}
+
+void ex03() {
+    FILE * arquivo;
+    arquivo = fopen("fibonacci.txt", "r");
+    
+    FILE * primos;
+    primos = fopen("primos.txt", "w");
+
+    int flag = 0;
+    for(int counter = 0; counter <= 64; counter++) {
+        char buffer[50]; char * ptr[50];
+        fgets(buffer, sizeof(buffer), arquivo);
+        double num = strtod(buffer, ptr);
+        
+        if (num != 1) {
+            int flag = 0;
+            for (int j = 2; j < num; j++) {
+                if (fmod(num, j) == 0) {
+                    flag = 1;
+                    break;
+                }
+            }
+
+            if (!(flag)) {
+                printf("PRIMO %.0lf \n", num);
+                fprintf(primos, "%.0lf\n", num);
+            }
+        }
+    }
+
+
+    fclose(arquivo);
+    fclose(primos);
 }
 
 void ex04() {
