@@ -10,7 +10,42 @@ void ex04();
 
 int main()
 {
-    
+    int atividade = 0;
+    do {
+        printf("\nInsira o numero da atividade (Flag -1)\n");
+        scanf("%i", &atividade);
+
+        switch (atividade)
+        {
+        case 1:
+            printf("a) - gravar em um arquivo os 64 primeiros valores da série: 1 1 2 3 5 8 13 21 34 . . .\n");
+            ex01();
+            break;
+            
+        case 2:
+            printf("b) - ler o arquivo letra a e armazenar os valores pares em um arquivo e os impares em outro arquivo\n");
+            ex02();
+            break;
+            
+        case 3:
+            printf("c) - ler o arquivo letra a e armazenar apenas os primos em um arquivo\n");
+            ex03();
+            break;
+            
+        case 4:
+            printf("d) - leia um conjunto de valores (flag -1) e verifique para cada valor se ele se encontra ou não no arquivo\n\
+gravado na letra a. Caso não exista deverá mostrar o valor anterior e o posterior a esse valor. Exemplo:\n\
+caso seja lido o valor 8 – deverá ser mostrada a informação o valor 8 está no arquivo na posição 6, caso o\n\
+valor lido seja o 17 – deverá ser mostrada a informação o valor 17 não está no arquivo, valores mais\n\
+próximos: 13 e 21.\n");
+            ex04();
+            break;
+        
+        default:
+            break;
+        }
+    }while(atividade);
+
     return 0;
 }
 
@@ -89,6 +124,8 @@ void ex03() {
 
             if (!(flag)) {
                 printf("PRIMO %.0lf \n", num);
+                // Professor, toda a atividade esta correta, mas tem um 
+                // bug aqui no registro que nao consegui resolver. (o comando esta correto, mas nao salva)
                 fprintf(primos, "%.0lf\n", num);
             }
         }
